@@ -25,24 +25,17 @@
 
 
 
- <a href="#mobile_menu" id="menuToggle">
-  <input type="checkbox" />
-  <span></span>
-  <span></span>
-  <span></span>
- </a>
 
 
 
  <nav id="mobile_menu">
   <ul>
-   <li><a href="#/">Home</a></li>
-   <li><a href="#">About</a></li>
-   <li><a href="#">Collection</a></li>
-   <li><a href="#">Roadmap</a></li>
-   <li><a href="#">Gallery</a></li>
-   <li><a href="#">Team</a></li>
-   <li><a href="#">FAQ</a></li>
+   <li><a href="#home">Home</a></li>
+   <li><a href="#about">About</a></li>
+   <li><a href="#roadmap">Roadmap</a></li>
+   <li><a href="#gallery">Gallery</a></li>
+   <li><a href="#team">Team</a></li>
+   <li><a href="#faq">FAQ</a></li>
    <li><a href="#" class="mobile-wallet">Connect</a></li>
   </ul>
  </nav>
@@ -70,7 +63,7 @@
     <div class="desktop-logo">
      <img src="images/logo.svg">
     </div>
-    <div>
+    <div class="hide-on-mobile">
      <ul class="desktop-menu">
       <li><a href="#home" class="menu-active">Home</a></li>
       <li><a href="#about">About</a></li>
@@ -81,7 +74,21 @@
       <li><a href="#" class="wallet-connect">Connect</a></li>
      </ul>
     </div>
+
+
+    <a href="#mobile_menu" id="menuToggle">
+     <input type="checkbox" />
+     <span></span>
+     <span></span>
+     <span></span>
+    </a>
+
+
    </div>
+
+
+
+
 
   </header>
 
