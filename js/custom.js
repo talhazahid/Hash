@@ -123,3 +123,39 @@ var myAccordion = new gianniAccordion({
 myAccordion.on("elementSelected", (data) => {
  console.log("elementOpened", data);
 });
+
+
+$(function () {
+ var shrinkHeader = 300;
+ $(window).scroll(function () {
+  var scroll = getCurrentScroll();
+  if (scroll >= shrinkHeader) {
+   $('.header').addClass('shrink');
+  }
+  else {
+   $('.header').removeClass('shrink');
+  }
+ });
+ function getCurrentScroll() {
+  return window.pageYOffset || document.documentElement.scrollTop;
+ }
+});
+
+
+
+$(document).on('click', 'a[href^="#"]', function (event) {
+ event.preventDefault();
+ $('html, body').animate({
+  scrollTop: $($.attr(this, 'href')).offset().top + -100
+ }, 1000);
+});
+
+
+$(document).scroll(function () {
+ var y = $(this).scrollTop();
+ if (y > 600) {
+  $('.top').fadeIn();
+ } else {
+  $('.top').fadeOut();
+ }
+});
