@@ -1,11 +1,57 @@
-@import url("https://fonts.googleapis.com/css2?family=Lekton:wght@400;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Lekton:wght@400;700&display=swap");
 @font-face {
   font-family: "slick";
   font-weight: normal;
   font-style: normal;
   src: url("../fonts/slick.eot");
   src: url("../fonts/slick.eot?#iefix") format("embedded-opentype"), url("../fonts/slick.woff") format("woff"), url("../fonts/slick.ttf") format("truetype"), url("../fonts/slick.svg#slick") format("svg"); }
+@font-face {
+  font-family: "Champion Gothic Welterweight";
+  src: url("../fonts/ChampionGothic-Welterweight.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap; }
+@font-face {
+  font-family: "Champion Gothic Lightweight";
+  src: url("../fonts/ChampionGothic-Lightweight.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap; }
+@font-face {
+  font-family: "Champion Gothic Featherweight";
+  src: url("../fonts/ChampionGothic-Featherweight.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap; }
+@font-face {
+  font-family: "Champion Gothic Bantamweight";
+  src: url("../fonts/ChampionGothic-Bantamweight.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap; }
+@font-face {
+  font-family: "Champion Gothic Middleweight";
+  src: url("fonts/ChampionGothic-Middleweight.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap; }
+@font-face {
+  font-family: "Champion Gothic Heavyweight";
+  src: url("../fonts/ChampionGothic-Heavyweight.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap; }
+@font-face {
+  font-family: "Century Gothic Bold";
+  src: url("../fonts/CenturyGothic-Bold.woff2") format("woff2");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap; }
+@font-face {
+  font-family: "Century Gothic";
+  src: url("../fonts/CenturyGothic.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap; }
 html,
 body,
 div,
@@ -132,8 +178,8 @@ table {
 
 body {
   color: #212224;
-  font-family: "Lekton", sans-serif;
-  overflow-x: hidden; }
+  overflow-x: hidden;
+  font-family: "Century Gothic", serif; }
 
 p {
   font-size: 20px;
@@ -189,9 +235,10 @@ ul.desktop-menu {
   font-size: 24px; }
 
 section h2 {
-  font-size: 75px;
+  font-size: 65px;
   text-transform: uppercase;
-  color: #212224; }
+  color: #212224;
+  font-family: "Champion Gothic Heavyweight"; }
 
 .full-width-effct {
   position: relative; }
@@ -204,7 +251,9 @@ section h2 {
     left: -100vw;
     z-index: -1;
     display: block;
-    background: #fafafa; }
+    top: 0;
+    background: #fafafa;
+    background: red; }
 
 .about-us {
   display: grid;
@@ -225,7 +274,8 @@ section h2 {
 
 .roadmap-number {
   color: #dad9d9;
-  font-size: 90px; }
+  font-size: 90px;
+  font-family: "Champion Gothic Heavyweight"; }
 
 .roadmap-box {
   display: grid;
@@ -249,8 +299,49 @@ section h2 {
   max-width: 1600px;
   margin: auto;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-gap: 30px; }
+  .section-gallery img {
+    max-height: 340px;
+    border-radius: 10px; }
+
+.team-section {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 30px;
+  margin-bottom: 60px; }
+
+.person-name {
+  color: #212224;
+  font-size: 30px;
+  font-weight: bold;
+  margin-top: 25px;
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: center; }
+
+.person-designation {
+  font-size: 24px;
+  color: #626262;
+  display: flex;
+  justify-content: center; }
+
+footer {
+  background: #212224;
+  padding: 20px 0px; }
+
+.roadmap-heading {
+  font-family: "Champion Gothic Heavyweight";
+  font-size: 36px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  line-height: 41px; }
+
+.roadmap-box p {
+  color: #626262;
+  margin: 30px 0px; }
 
 @media only screen and (min-width: 1024px) {
   #menuToggle {
@@ -1546,16 +1637,16 @@ body.mm-ocd-opened {
   box-sizing: border-box; }
 
 .card {
-  width: 400px;
-  margin: 50px auto;
-  border-radius: 2px;
-  background: white;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2); }
+  max-width: 1200px;
+  margin: 0px auto;
+  gap: 30px;
+  padding-bottom: 50px;
+  display: flex;
+  flex-direction: column; }
 
 article {
   position: relative;
-  transition: all 0.3s;
-  background: #e8eaf6; }
+  transition: all 0.3s; }
   article.selected {
     z-index: 2; }
 
@@ -1565,9 +1656,45 @@ article {
   transition: all ease-out 0.4s 0.1s; }
   .selected .content {
     transform: translateY(0);
-    opacity: 1; }
+    opacity: 1;
+    padding: 0px 38px;
+    margin-bottom: 20px; }
   .collapsed .content {
     display: none; }
+
+.accordion-parent {
+  border-radius: 2px;
+  background: white;
+  border: 3px solid #212224;
+  cursor: pointer;
+  border-radius: 20px; }
+
+.accordion-parent h3 {
+  padding: 20px 40px;
+  font-weight: bold;
+  font-size: 24px;
+  position: relative; }
+  .accordion-parent h3::after {
+    position: absolute;
+    content: "";
+    background: url(../images/accordion-arrow.svg);
+    width: 41px;
+    height: 23px;
+    display: block;
+    top: 0;
+    right: 20px;
+    -webkit-transition: 0.3s ease-in-out;
+    -o-transition: 0.3s ease-in-out;
+    transition: 0.3s ease-in-out;
+    bottom: 0;
+    margin: auto; }
+
+.accordion-parent.selected h3::after {
+  transform: rotate(180deg); }
+
+.content {
+  color: #626262;
+  font-size: 22px; }
 
 @keyframes close-line-one-out {
   0%,

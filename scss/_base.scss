@@ -125,8 +125,8 @@ table {
 
 body {
  color: #212224;
- font-family: "Lekton", sans-serif;
  overflow-x: hidden;
+ font-family: "Century Gothic", serif;
 }
 
 p {
@@ -196,9 +196,10 @@ ul.desktop-menu {
 }
 
 section h2 {
- font-size: 75px;
+ font-size: 65px;
  text-transform: uppercase;
  color: #212224;
+ font-family: "Champion Gothic Heavyweight";
 }
 
 .full-width-effct {
@@ -212,7 +213,9 @@ section h2 {
   left: -100vw;
   z-index: -1;
   display: block;
+  top: 0;
   background: #fafafa;
+  background: red;
  }
 }
 
@@ -242,6 +245,7 @@ section h2 {
 .roadmap-number {
  color: #dad9d9;
  font-size: 90px;
+ font-family: "Champion Gothic Heavyweight";
 }
 
 .roadmap-box {
@@ -269,6 +273,57 @@ section h2 {
  max-width: 1600px;
  margin: auto;
  display: grid;
+ grid-template-columns: repeat(4, 1fr);
+ grid-gap: 30px;
+
+ img {
+  max-height: 340px;
+  border-radius: 10px;
+ }
+}
+
+.team-section {
+ max-width: 1200px;
+ margin: auto;
+ display: grid;
  grid-template-columns: repeat(3, 1fr);
  grid-gap: 30px;
+ margin-bottom: 60px;
+}
+
+.person-name {
+ color: #212224;
+ font-size: 30px;
+ font-weight: bold;
+ margin-top: 25px;
+ margin-bottom: 5px;
+ display: flex;
+ justify-content: center;
+}
+
+.person-designation {
+ font-size: 24px;
+ color: #626262;
+ display: flex;
+ justify-content: center;
+}
+
+footer {
+ background: #212224;
+ padding: 20px 0px;
+}
+
+.roadmap-heading {
+ font-family: "Champion Gothic Heavyweight";
+ font-size: 36px;
+ margin-bottom: 20px;
+ text-transform: uppercase;
+ line-height: 41px;
+}
+
+.roadmap-box {
+ p {
+  color: #626262;
+  margin: 30px 0px;
+ }
 }

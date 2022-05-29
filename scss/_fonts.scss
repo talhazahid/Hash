@@ -1,6 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Lekton:wght@400;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Lekton:wght@400;700&display=swap");
-
 @font-face {
  font-family: "slick";
  font-weight: normal;
@@ -9,4 +6,67 @@
  src: url("../fonts/slick.eot");
  src: url("../fonts/slick.eot?#iefix") format("embedded-opentype"), url("../fonts/slick.woff") format("woff"),
   url("../fonts/slick.ttf") format("truetype"), url("../fonts/slick.svg#slick") format("svg");
+}
+@font-face {
+ font-family: "Champion Gothic Welterweight";
+ src: url("../fonts/ChampionGothic-Welterweight.woff2") format("woff2");
+ font-weight: normal;
+ font-style: normal;
+ font-display: swap;
+}
+
+@font-face {
+ font-family: "Champion Gothic Lightweight";
+ src: url("../fonts/ChampionGothic-Lightweight.woff2") format("woff2");
+ font-weight: 300;
+ font-style: normal;
+ font-display: swap;
+}
+
+@font-face {
+ font-family: "Champion Gothic Featherweight";
+ src: url("../fonts/ChampionGothic-Featherweight.woff2") format("woff2");
+ font-weight: 300;
+ font-style: normal;
+ font-display: swap;
+}
+
+@font-face {
+ font-family: "Champion Gothic Bantamweight";
+ src: url("../fonts/ChampionGothic-Bantamweight.woff2") format("woff2");
+ font-weight: 300;
+ font-style: normal;
+ font-display: swap;
+}
+
+@font-face {
+ font-family: "Champion Gothic Middleweight";
+ src: url("fonts/ChampionGothic-Middleweight.woff2") format("woff2");
+ font-weight: normal;
+ font-style: normal;
+ font-display: swap;
+}
+
+@font-face {
+ font-family: "Champion Gothic Heavyweight";
+ src: url("../fonts/ChampionGothic-Heavyweight.woff2") format("woff2");
+ font-weight: 500;
+ font-style: normal;
+ font-display: swap;
+}
+
+@font-face {
+ font-family: "Century Gothic Bold";
+ src: url("../fonts/CenturyGothic-Bold.woff2") format("woff2");
+ font-weight: bold;
+ font-style: normal;
+ font-display: swap;
+}
+
+@font-face {
+ font-family: "Century Gothic";
+ src: url("../fonts/CenturyGothic.woff2") format("woff2");
+ font-weight: normal;
+ font-style: normal;
+ font-display: swap;
 }

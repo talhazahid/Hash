@@ -1316,17 +1316,17 @@ body.mm-ocd-opened {
 }
 
 .card {
- width: 400px;
- margin: 50px auto;
- border-radius: 2px;
- background: white;
- box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+ max-width: 1200px;
+ margin: 0px auto;
+ gap: 30px;
+ padding-bottom: 50px;
+ display: flex;
+ flex-direction: column;
 }
 
 article {
  position: relative;
  transition: all 0.3s;
- background: #e8eaf6;
 
  &.selected {
   z-index: 2;
@@ -1341,6 +1341,8 @@ article {
  .selected & {
   transform: translateY(0);
   opacity: 1;
+  padding: 0px 38px;
+  margin-bottom: 20px;
  }
 
  .collapsed & {
@@ -1348,6 +1350,50 @@ article {
  }
 }
 
+.accordion-parent {
+ border-radius: 2px;
+ background: white;
+ border: 3px solid #212224;
+ cursor: pointer;
+
+ border-radius: 20px;
+}
+
+.accordion-parent h3 {
+ padding: 20px 40px;
+ font-weight: bold;
+ font-size: 24px;
+ position: relative;
+
+ &::after {
+  position: absolute;
+  content: "";
+  background: url(../images/accordion-arrow.svg);
+  width: 41px;
+  height: 23px;
+  display: block;
+  top: 0;
+  right: 20px;
+  -webkit-transition: 0.3s ease-in-out;
+  -o-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+  bottom: 0;
+  margin: auto;
+ }
+}
+
+.accordion-parent.selected {
+ h3 {
+  &::after {
+   transform: rotate(180deg);
+  }
+ }
+}
+
+.content {
+ color: #626262;
+ font-size: 22px;
+}
 @keyframes close-line-one-out {
  0%,
  50% {
