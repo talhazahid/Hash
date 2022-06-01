@@ -364,6 +364,8 @@ section h2 {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 30px; }
+  .section-gallery a {
+    text-align: center; }
   .section-gallery img {
     max-height: 340px;
     border-radius: 10px;
@@ -472,6 +474,9 @@ footer {
   display: flex;
   gap: 20px; }
 
+#roadmap {
+  padding-bottom: 50px; }
+
 @media only screen and (max-width: 1023px) {
   .hide-on-mobile {
     display: none; }
@@ -575,6 +580,8 @@ footer {
     margin-bottom: 60px;
     flex-wrap: wrap;
     justify-content: center; }
+    .team-section img {
+      max-height: 250px; }
 
   #faq .card {
     max-width: 1200px;
@@ -629,13 +636,69 @@ footer {
 @media only screen and (min-width: 1024px) {
   #menuToggle {
     display: none; } }
-@media only screen and (min-width: 1024px) and (max-width: 1280px) {
+@media only screen and (min-width: 1024px) and (max-width: 1400px) {
   .hero-section {
     gap: 50px;
     padding: 0px 30px; }
 
   .main-title {
-    font-size: 70px; } }
+    font-size: 70px; }
+
+  .about-us {
+    display: grid;
+    grid-template-columns: 40% 1fr;
+    grid-gap: 200px;
+    padding: 90px 60px;
+    margin-top: 30px; }
+
+  #home,
+  #about,
+  #gallery,
+  #team #faq {
+    min-height: 70vh; }
+
+  section h2 {
+    font-size: 55px; }
+
+  #roadmap {
+    padding: 90px 60px; }
+
+  .roadmap-nft img {
+    max-width: 100%; }
+
+  .roadmap-box {
+    align-items: center; }
+
+  .section-gallery {
+    max-width: 1600px;
+    margin: auto;
+    display: flex;
+    grid-gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center; }
+
+  .section-gallery img {
+    max-height: 300px; }
+
+  .team-section img {
+    max-height: 280px; }
+
+  .team-section {
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 30px;
+    margin-bottom: 60px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0px 50px; }
+
+  #faq .card {
+    max-width: 980px;
+    margin: 0px auto;
+    gap: 30px;
+    padding-bottom: 50px;
+    display: flex;
+    flex-direction: column; } }
 [data-aos][data-aos][data-aos-duration="50"],
 body[data-aos-duration="50"] [data-aos] {
   transition-duration: 50ms; }

@@ -352,6 +352,10 @@ section h2 {
  grid-template-columns: repeat(4, 1fr);
  grid-gap: 30px;
 
+ a {
+  text-align: center;
+ }
+
  img {
   max-height: 340px;
   border-radius: 10px;
@@ -479,4 +483,8 @@ footer {
 .footer-social {
  display: flex;
  gap: 20px;
+}
+
+#roadmap {
+ padding-bottom: 50px;
 }
