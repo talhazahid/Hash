@@ -159,3 +159,15 @@ $(document).scroll(function () {
   $('.top').fadeOut();
  }
 });
+
+
+
+
+
+
+
+
+$('.desktop-menu li a').on('click', function () {
+ $('.desktop-menu li a.current-menu').removeClass('current-menu');
+ $(this).addClass('current-menu');
+});

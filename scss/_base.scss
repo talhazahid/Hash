@@ -192,6 +192,31 @@ ul.desktop-menu {
   font-size: 20px;
   color: #212224;
   text-decoration: none;
+  position: relative;
+  &:hover {
+   &::after {
+    content: "";
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    background: #212224;
+    left: 0;
+    bottom: -4px;
+   }
+  }
+ }
+}
+
+.current-menu {
+ position: relative;
+ &::after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  background: #212224;
+  left: 0;
+  bottom: -4px;
  }
 }
 
@@ -392,11 +417,6 @@ section h2 {
  justify-content: center;
 }
 
-footer {
- background: #212224;
- padding: 20px 0px;
-}
-
 .roadmap-heading {
  font-family: "Champion Gothic Heavyweight";
  font-size: 36px;
@@ -431,8 +451,9 @@ footer {
 }
 
 footer {
+ background: #212224;
  position: relative;
- padding: 50px 0px;
+ padding: 50px 30px;
  display: flex;
  flex-direction: column;
  &::after {

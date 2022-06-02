@@ -233,7 +233,27 @@ ul.desktop-menu {
   ul.desktop-menu a {
     font-size: 20px;
     color: #212224;
-    text-decoration: none; }
+    text-decoration: none;
+    position: relative; }
+    ul.desktop-menu a:hover::after {
+      content: "";
+      position: absolute;
+      height: 2px;
+      width: 100%;
+      background: #212224;
+      left: 0;
+      bottom: -4px; }
+
+.current-menu {
+  position: relative; }
+  .current-menu::after {
+    content: "";
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    background: #212224;
+    left: 0;
+    bottom: -4px; }
 
 .hero-section {
   display: flex;
@@ -396,10 +416,6 @@ section h2 {
   display: flex;
   justify-content: center; }
 
-footer {
-  background: #212224;
-  padding: 20px 0px; }
-
 .roadmap-heading {
   font-family: "Champion Gothic Heavyweight";
   font-size: 36px;
@@ -428,8 +444,9 @@ footer {
     color: #212224 !important; }
 
 footer {
+  background: #212224;
   position: relative;
-  padding: 50px 0px;
+  padding: 50px 30px;
   display: flex;
   flex-direction: column; }
   footer::after {
@@ -698,7 +715,13 @@ footer {
     gap: 30px;
     padding-bottom: 50px;
     display: flex;
-    flex-direction: column; } }
+    flex-direction: column; }
+
+  .footer-center-column img {
+    max-height: 280px; }
+
+  footer {
+    padding: 50px 30px; } }
 [data-aos][data-aos][data-aos-duration="50"],
 body[data-aos-duration="50"] [data-aos] {
   transition-duration: 50ms; }
