@@ -653,7 +653,7 @@ footer {
 @media only screen and (min-width: 1024px) {
   #menuToggle {
     display: none; } }
-@media only screen and (min-width: 1024px) and (max-width: 1400px) {
+@media only screen and (min-width: 1024px) and (max-width: 1600px) {
   .hero-section {
     gap: 50px;
     padding: 0px 30px; }
@@ -695,7 +695,7 @@ footer {
     justify-content: center; }
 
   .section-gallery img {
-    max-height: 300px; }
+    max-height: 270px; }
 
   .team-section img {
     max-height: 280px; }
