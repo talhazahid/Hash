@@ -2066,10 +2066,11 @@ article {
     -o-transition: 0.3s ease-in-out;
     transition: 0.3s ease-in-out;
     bottom: 0;
-    margin: auto; }
+    margin: auto;
+    transform: rotate(180deg); }
 
 .accordion-parent.selected h3::after {
-  transform: rotate(180deg); }
+  transform: rotate(0deg); }
 
 .content {
   color: #626262;
@@ -2114,5 +2115,7 @@ article {
     transform: translateY(-50px) rotate(90deg); }
   100% {
     transform: rotate(90deg); } }
+path {
+  transition: stroke-dashoffset 1000ms ease; }
 
 /*# sourceMappingURL=main.css.map */
