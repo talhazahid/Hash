@@ -365,7 +365,9 @@ section h2 {
   grid-template-columns: 60% 1fr;
   max-width: 980px;
   grid-gap: 60px;
-  margin: auto; }
+  margin: auto;
+  position: relative;
+  z-index: 2; }
 
 .roadmap-right-line,
 .roadmap-left-line {
