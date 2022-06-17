@@ -68,10 +68,16 @@
 
  .roadmap-nft {
   img {
-   width: auto;
+   max-width: 345px;
    max-height: 400px;
    display: table;
    margin: auto;
+  }
+ }
+
+ .animateme {
+  img {
+   max-width: 345px;
   }
  }
 

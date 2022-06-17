@@ -176,6 +176,9 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
+html {
+  overflow-x: hidden; }
+
 body {
   color: #212224;
   overflow-x: hidden;
@@ -665,10 +668,13 @@ footer {
     font-size: 70px; }
 
   .roadmap-nft img {
-    width: auto;
+    max-width: 345px;
     max-height: 400px;
     display: table;
     margin: auto; }
+
+  .animateme img {
+    max-width: 345px; }
 
   .roadmap-right-line,
   .roadmap-left-line {
