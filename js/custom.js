@@ -114,8 +114,9 @@ https://github.com/cant89/gianni-accordion-js
 
 
 
+
 var myAccordion = new gianniAccordion({
- elements: ".card article",
+ elements: ".card section",
  trigger: "[data-accordion-element-trigger]",
  content: "[data-accordion-element-content]",
 });
@@ -123,6 +124,8 @@ var myAccordion = new gianniAccordion({
 myAccordion.on("elementSelected", (data) => {
  console.log("elementOpened", data);
 });
+
+
 
 
 $(function () {
