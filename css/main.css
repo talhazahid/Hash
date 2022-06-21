@@ -756,30 +756,6 @@ footer {
   height: 270px;
   border-radius: 10px; }
 
-.nft-artwork-result {
-  background: #ffffff; }
-  .nft-artwork-result:hover .buy-art {
-    visibility: visible;
-    position: absolute;
-    background: #ffffff;
-    border: 1px solid #c4c4c4;
-    border-radius: 0px 0px 20px 20px;
-    /* padding: 10px 10px 5px; */
-    position: relative;
-    top: -10px;
-    /* overflow: hidden; */
-    transition: ease-in-out 200ms;
-    border-top: 0px;
-    width: calc(100% - 40px);
-    display: table;
-    margin: auto;
-    left: -11px;
-    width: calc(100% - -22px);
-    top: -4px;
-    padding-top: 14px;
-    /* overflow: hidden; */
-    transition: ease-in-out 200ms; }
-
 .nft-sale-title {
   font-weight: 400;
   font-size: 16px;
@@ -818,22 +794,44 @@ footer {
     height: 24px;
     margin: 3px 10px; }
 
+.nft-artwork-result {
+  background: #ffffff;
+  transition: ease-in-out 200ms; }
+  .nft-artwork-result:hover .buy-art {
+    visibility: visible;
+    position: absolute;
+    font-size: 16px;
+    display: flex;
+    margin: auto;
+    left: 0;
+    top: 0px;
+    padding-top: 14px;
+    height: 100%;
+    width: 100%;
+    border-radius: 0px 0px 20px 20px;
+    opacity: 1;
+    z-index: 1; }
+
 .buy-art {
   font-weight: 700;
-  font-size: 14px;
+  font-size: 0px;
   line-height: 17px;
-  display: flex;
   align-items: center;
   text-align: right;
   color: #16db65;
-  display: table;
-  margin: 13px auto 15px;
-  visibility: hidden;
-  max-height: 0px;
-  transition: ease-in-out 200ms;
-  position: absolute;
   display: flex;
-  justify-content: center; }
+  margin: auto;
+  transition: all ease-in-out 200ms;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  background: white;
+  left: 0;
+  top: 0px;
+  opacity: 0;
+  z-index: -10;
+  height: 0px; }
 
 @media only screen and (max-width: 1023px) {
   .hide-on-mobile {
