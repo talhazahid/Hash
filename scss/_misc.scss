@@ -1311,7 +1311,7 @@ body.mm-ocd-opened {
  max-width: 1200px;
  margin: 0px auto;
  gap: 30px;
- padding-bottom: 50px;
+ margin-bottom: 20px;
  display: flex;
  flex-direction: column;
 }
@@ -1460,4 +1460,29 @@ path {
  height: auto;
  overflow: hidden;
  transition: height 0.5s;
+}
+
+.market-arrow {
+ position: relative;
+
+ &::after {
+  position: absolute;
+  content: "";
+  background: url(../images/small-arrow.svg);
+  width: 20px;
+  height: 13px;
+  display: block;
+  top: 0;
+  right: 28px;
+  -webkit-transition: 0.3s ease-in-out;
+  -o-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+  bottom: 0;
+  margin: auto;
+  transform: rotate(180deg);
+ }
+}
+
+.selected .market-arrow::after {
+ transform: rotate(0deg);
 }

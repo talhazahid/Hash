@@ -644,7 +644,7 @@ footer {
   width: 280px; }
 
 .market-sidebar {
-  width: 280px; }
+  width: 260px; }
 
 .shop-row {
   display: grid;
@@ -664,12 +664,20 @@ footer {
 .market-row {
   display: grid;
   grid-template-columns: auto 1fr;
-  margin-top: 50px; }
+  margin-top: 50px;
+  cursor: pointer;
+  grid-gap: 30px; }
 
 .divider-shop {
   height: 1px;
   width: 100%;
   background: #e9ecef; }
+
+.sidebar-divider {
+  height: 1px;
+  width: 100%;
+  background: #e9ecef;
+  margin: 20px 0px 0px; }
 
 .market-status-row {
   display: flex;
@@ -681,7 +689,151 @@ footer {
 .market-checkbox-row {
   font-size: 20px;
   display: flex;
-  justify-content: space-between; }
+  justify-content: space-between;
+  width: 240px;
+  padding: 14px 10px; }
+  .market-checkbox-row:hover {
+    background: #eff2ff;
+    color: #0023dc;
+    cursor: pointer; }
+
+.sidebar-content-heading {
+  margin-bottom: 10px;
+  padding: 0px 10px;
+  font-weight: 700;
+  font-size: 20px;
+  /* line-height: 120px; */
+  display: flex;
+  align-items: center;
+  color: #000000; }
+
+.market-status-row .active {
+  background: #eff2ff;
+  color: #0023dc; }
+
+.search-results-number {
+  width: 100%;
+  margin: 0px 0px 20px;
+  color: #adb5bd;
+  font-size: 18px; }
+
+.filter-btns-action-row {
+  display: flex;
+  gap: 20px;
+  width: 100%; }
+
+.buy-now {
+  width: 133px;
+  height: 52px;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  border: 0px;
+  border-radius: 10px;
+  font-weight: bold;
+  justify-content: center;
+  cursor: pointer; }
+
+.clear-all {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  display: flex;
+  align-items: center;
+  color: #212224;
+  background: none;
+  border: none; }
+
+.nft-results-container {
+  width: 100%;
+  margin-top: 30px;
+  flex-wrap: wrap;
+  display: flex;
+  gap: 30px; }
+
+.nft-sale-img img {
+  max-width: 270px;
+  height: 270px;
+  border-radius: 10px; }
+
+.nft-artwork-result {
+  background: #ffffff; }
+  .nft-artwork-result:hover .buy-art {
+    visibility: visible;
+    position: absolute;
+    background: #ffffff;
+    border: 1px solid #c4c4c4;
+    border-radius: 0px 0px 20px 20px;
+    /* padding: 10px 10px 5px; */
+    position: relative;
+    top: -10px;
+    /* overflow: hidden; */
+    transition: ease-in-out 200ms;
+    border-top: 0px;
+    width: calc(100% - 40px);
+    display: table;
+    margin: auto;
+    left: -11px;
+    width: calc(100% - -22px);
+    top: -4px;
+    padding-top: 14px;
+    /* overflow: hidden; */
+    transition: ease-in-out 200ms; }
+
+.nft-sale-title {
+  font-weight: 400;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  color: #969696; }
+
+.nft-artwork-details {
+  background: #ffffff;
+  border: 1px solid #c4c4c4;
+  border-radius: 0px 0px 20px 20px;
+  padding: 10px 10px 5px;
+  position: relative;
+  top: -10px;
+  height: 100px;
+  transition: ease-in-out 200ms; }
+
+.nft-sale-title-second {
+  font-size: 16px;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  color: #000000;
+  font-weight: 700;
+  margin-top: 5px; }
+
+.nft-sale-market-place {
+  font-weight: 400;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  text-align: right;
+  color: #626262;
+  margin-top: 5px; }
+  .nft-sale-market-place img {
+    height: 24px;
+    margin: 3px 10px; }
+
+.buy-art {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
+  display: flex;
+  align-items: center;
+  text-align: right;
+  color: #16db65;
+  display: table;
+  margin: 13px auto 15px;
+  visibility: hidden;
+  max-height: 0px;
+  transition: ease-in-out 200ms;
+  position: absolute;
+  display: flex;
+  justify-content: center; }
 
 @media only screen and (max-width: 1023px) {
   .hide-on-mobile {
@@ -2204,7 +2356,7 @@ body.mm-ocd-opened {
   max-width: 1200px;
   margin: 0px auto;
   gap: 30px;
-  padding-bottom: 50px;
+  margin-bottom: 20px;
   display: flex;
   flex-direction: column; }
 
@@ -2309,5 +2461,26 @@ path {
   height: auto;
   overflow: hidden;
   transition: height 0.5s; }
+
+.market-arrow {
+  position: relative; }
+  .market-arrow::after {
+    position: absolute;
+    content: "";
+    background: url(../images/small-arrow.svg);
+    width: 20px;
+    height: 13px;
+    display: block;
+    top: 0;
+    right: 28px;
+    -webkit-transition: 0.3s ease-in-out;
+    -o-transition: 0.3s ease-in-out;
+    transition: 0.3s ease-in-out;
+    bottom: 0;
+    margin: auto;
+    transform: rotate(180deg); }
+
+.selected .market-arrow::after {
+  transform: rotate(0deg); }
 
 /*# sourceMappingURL=main.css.map */
