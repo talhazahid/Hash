@@ -725,7 +725,6 @@ footer {
 .shop-row {
  display: grid;
  width: 100%;
- gap: 20px;
  grid-template-columns: 280px 1fr;
  margin-top: 160px;
  position: relative;
@@ -739,4 +738,33 @@ footer {
 .filter-collection {
  position: relative;
  top: 10px;
+}
+
+.market-row {
+ display: grid;
+ grid-template-columns: auto 1fr;
+ margin-top: 50px;
+}
+
+.divider-shop {
+ height: 1px;
+ width: 100%;
+ background: #e9ecef;
+}
+
+.market-status-row {
+ display: flex;
+ justify-content: space-between;
+}
+
+.market-sidebar {
+ .selected .content {
+  padding: 0px;
+ }
+}
+
+.market-checkbox-row {
+ font-size: 20px;
+ display: flex;
+ justify-content: space-between;
 }

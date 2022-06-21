@@ -1301,14 +1301,6 @@ body.mm-ocd-opened {
  transform: rotate(-45deg) translate(0, -1px);
 }
 
-// NECESSARY
-
-[data-accordion-element-content] {
- height: auto;
- overflow: hidden;
- transition: height 0.5s;
-}
-
 // JUST TO STYLE THIS PEN
 
 * {
@@ -1462,4 +1454,10 @@ article {
 
 path {
  transition: stroke-dashoffset 1000ms ease;
+}
+
+[data-accordion-element-content] {
+ height: auto;
+ overflow: hidden;
+ transition: height 0.5s;
 }
