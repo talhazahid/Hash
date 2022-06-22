@@ -102,7 +102,7 @@
    </aside>
 
    <section class="search-market-row">
-    <div>
+    <div class="search-market-field-row">
      <input placeholder="Search items, collections, and accounts" role="searchbox" type="text" value="">
     </div>
 
@@ -117,6 +117,13 @@
    </section>
   </div>
 
+
+  <div class="mobile-filter-row">
+   <a href="#" class="mobile-filter" data-toggle="modal" data-target="#smart-contract"><img
+     src="images/filter-mobile.svg" alt="mobile-filter"> Filter</a>
+   <a href="#" class="mobile-sort"><img src="images/sort-mobile.svg" alt="sort-mobile"> Sort</a>
+
+  </div>
 
   <div class="divider-shop">
 
@@ -271,9 +278,9 @@
 
    </aside>
 
-   <section>
+   <section class="market-section">
     <div class="search-results-number">
-     165,256,156
+     165,256,156 Results
     </div>
 
     <div class="filter-btns-action-row">
@@ -630,6 +637,115 @@
 
   <img src="images/up-arrow.svg">
  </a>
+
+
+
+ <div id="smart-contract" class="modal modal-lg">
+  <div class="modal-dialog">
+   <div class="modal-content">
+    <span class="modal-close">&times;</span>
+    <div class="modal-body">
+
+     <div class="modal-filter-container">
+      <div class="card">
+       <article class="">
+        <div data-accordion-element-trigger class="market-arrow sidebar-content-heading">Status</div>
+        <div data-accordion-element-content class="content">
+         <div class="market-status-row">
+          <div class="market-checkbox-row active">
+           <div>Buy Now</div>
+           <div><input type="checkbox"></div>
+          </div>
+         </div>
+         <div class="market-status-row">
+          <div class="market-checkbox-row">
+           <div>On Auction</div>
+           <div><input type="checkbox"></div>
+          </div>
+         </div>
+         <div class="market-status-row">
+          <div class="market-checkbox-row">
+           <div>New</div>
+           <div><input type="checkbox"></div>
+          </div>
+         </div>
+         <div class="market-status-row">
+          <div class="market-checkbox-row">
+           <div>Has Offers</div>
+           <div><input type="checkbox"></div>
+          </div>
+         </div>
+
+
+         <div class="sidebar-divider">
+
+         </div>
+
+
+        </div>
+
+
+
+       </article>
+
+       <article class="">
+        <div data-accordion-element-trigger class="market-arrow sidebar-content-heading">Prices</div>
+        <div data-accordion-element-content class="content">
+         <div class="market-status-row">
+          <div class="market-checkbox-row active">
+           <div>Buy Now</div>
+           <div><input type="checkbox"></div>
+          </div>
+         </div>
+         <div class="market-status-row">
+          <div class="market-checkbox-row">
+           <div>On Auction</div>
+           <div><input type="checkbox"></div>
+          </div>
+         </div>
+         <div class="market-status-row">
+          <div class="market-checkbox-row">
+           <div>New</div>
+           <div><input type="checkbox"></div>
+          </div>
+         </div>
+         <div class="market-status-row">
+          <div class="market-checkbox-row">
+           <div>Has Offers</div>
+           <div><input type="checkbox"></div>
+          </div>
+         </div>
+
+
+         <div class="sidebar-divider">
+
+         </div>
+
+
+        </div>
+
+
+
+       </article>
+
+      </div>
+
+
+      <div class="modal-filter-cta-row">
+       <button class="primary-cta">Search</button>
+       <button class="secondary-cta">Cancel</button>
+      </div>
+
+     </div>
+
+
+    </div>
+   </div>
+  </div>
+
+ </div>
+
+
 
 
  </div>
