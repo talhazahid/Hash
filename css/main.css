@@ -5,50 +5,32 @@
   src: url("../fonts/slick.eot");
   src: url("../fonts/slick.eot?#iefix") format("embedded-opentype"), url("../fonts/slick.woff") format("woff"), url("../fonts/slick.ttf") format("truetype"), url("../fonts/slick.svg#slick") format("svg"); }
 @font-face {
-  font-family: "Champion Gothic Welterweight";
-  src: url("../fonts/ChampionGothic-Welterweight.woff2") format("woff2");
+  font-family: "Lexend Deca";
+  src: url("../fonts/LexendDeca-SemiBold.woff2") format("woff2"), url("../fonts/LexendDeca-SemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap; }
+@font-face {
+  font-family: "Lexend Deca";
+  src: url("../fonts/LexendDeca-Medium.woff2") format("woff2"), url("../fonts/LexendDeca-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap; }
+@font-face {
+  font-family: "Lexend Deca";
+  src: url("../fonts/LexendDeca-Regular.woff2") format("woff2"), url("../fonts/LexendDeca-Regular.woff") format("woff");
   font-weight: normal;
   font-style: normal;
   font-display: swap; }
 @font-face {
-  font-family: "Champion Gothic Lightweight";
-  src: url("../fonts/ChampionGothic-Lightweight.woff2") format("woff2");
+  font-family: "Lexend Deca";
+  src: url("../fonts/LexendDeca-Light.woff2") format("woff2"), url("../fonts/LexendDeca-Light.woff") format("woff");
   font-weight: 300;
   font-style: normal;
   font-display: swap; }
 @font-face {
-  font-family: "Champion Gothic Featherweight";
-  src: url("../fonts/ChampionGothic-Featherweight.woff2") format("woff2");
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap; }
-@font-face {
-  font-family: "Champion Gothic Bantamweight";
-  src: url("../fonts/ChampionGothic-Bantamweight.woff2") format("woff2");
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap; }
-@font-face {
-  font-family: "Champion Gothic Middleweight";
-  src: url("../fonts/ChampionGothic-Middleweight.woff2") format("woff2");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap; }
-@font-face {
-  font-family: "Champion Gothic Heavyweight";
-  src: url("../fonts/ChampionGothic-Heavyweight.woff2") format("woff2");
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap; }
-@font-face {
-  font-family: "Century Gothic Bold";
-  src: url("../fonts/CenturyGothic-Bold.woff2") format("woff2");
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap; }
-@font-face {
-  font-family: "Century Gothic";
-  src: url("../fonts/CenturyGothic.woff2") format("woff2");
+  font-family: "BN BOOP";
+  src: url("../fonts/BNBOOPRegular.woff2") format("woff2"), url("fonts/../BNBOOPRegular.woff") format("woff");
   font-weight: normal;
   font-style: normal;
   font-display: swap; }
@@ -182,7 +164,8 @@ html {
 body {
   color: #212224;
   overflow-x: hidden;
-  font-family: "Century Gothic", serif; }
+  font-family: "Lexend Deca";
+  font-weight: 300; }
 
 #home,
 #about,
@@ -276,16 +259,16 @@ ul.desktop-menu {
 
 .thanks-support {
   font-size: 24px;
-  color: #212224;
-  font-family: "Century Gothic Bold"; }
+  color: #212224; }
 
 .main-title {
   font-size: 70px;
   color: #212224;
-  font-family: "Champion Gothic Heavyweight";
+  font-family: "BN BOOP";
   text-transform: uppercase;
-  line-height: 120%;
-  margin-bottom: 10px; }
+  line-height: 70px;
+  margin-bottom: 10px;
+  margin-top: 10px; }
 
 .hero-cta {
   border: 1px solid #000000;
@@ -326,7 +309,7 @@ section h2 {
   font-size: 58px;
   text-transform: uppercase;
   color: #212224;
-  font-family: "Champion Gothic Heavyweight"; }
+  font-family: "BN BOOP"; }
 
 .full-width-effct {
   position: relative; }
@@ -347,24 +330,24 @@ section h2 {
   grid-template-columns: 40% 1fr;
   grid-gap: 200px;
   padding: 30px 0px;
-  margin-top: 30px; }
+  align-items: center; }
 
 .about-nft {
   max-width: 700px;
   display: flex;
   align-items: center; }
   .about-nft img {
-    max-height: 700px; }
+    max-height: 600px; }
 
-.about-content {
-  margin-top: 150px; }
-  .about-content .hero-cta {
-    margin-top: 10px; }
+.about-content .hero-cta {
+  margin-top: 10px; }
 
 .roadmap-number {
   color: #dad9d9;
-  font-size: 90px;
-  font-family: "Champion Gothic Heavyweight"; }
+  font-size: 80px;
+  font-family: "BN BOOP";
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px #3f3f3f; }
 
 .roadmap-box {
   display: grid;
@@ -425,7 +408,7 @@ section h2 {
   justify-content: center; }
 
 .roadmap-heading {
-  font-family: "Champion Gothic Heavyweight";
+  font-family: "BN BOOP";
   font-size: 36px;
   margin-bottom: 20px;
   text-transform: uppercase;
@@ -452,11 +435,17 @@ section h2 {
     color: #212224 !important; }
 
 footer {
+  max-width: 1280px;
+  margin: auto;
   background: #212224;
   position: relative;
   padding: 50px 30px;
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  background-image: url(../images/footer-right.png);
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: 260px; }
   footer::after {
     position: absolute;
     width: 10000vw;
@@ -469,10 +458,24 @@ footer {
     top: 0;
     background: #212224; }
 
+.footer-column {
+  width: 20%; }
+
 .footer-container {
   display: flex;
-  justify-content: space-between;
-  align-items: center; }
+  color: white; }
+  .footer-container h3 {
+    font-size: 20px;
+    margin-bottom: 10px; }
+  .footer-container ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; }
+  .footer-container a {
+    color: white;
+    text-decoration: none; }
+    .footer-container a:hover {
+      text-decoration: underline; }
 
 .top {
   position: fixed;
@@ -489,7 +492,7 @@ footer {
 
 .footer-socials-copyright {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   color: white;
   margin: 20px 0px 0px;
   align-items: center; }
@@ -615,10 +618,9 @@ footer {
 .market-place {
   display: flex;
   gap: 15px;
-  align-items: center;
-  margin-top: 20px; }
+  align-items: center; }
   .market-place img {
-    height: 34px; }
+    height: 26px; }
 
 .search-market-row {
   display: flex;
@@ -836,6 +838,10 @@ footer {
 .search-market-field-row {
   max-width: 600px; }
 
+.text-outline-black {
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 2px black; }
+
 @media only screen and (max-width: 1023px) {
   .hide-on-mobile {
     display: none; }
@@ -860,7 +866,8 @@ footer {
   .right-hero-section {
     max-width: 700px;
     max-height: 750px;
-    padding: 0px 30px; }
+    padding: 0px 30px;
+    text-align: center; }
 
   .main-title {
     font-size: 45px;
@@ -965,16 +972,12 @@ footer {
   .footer-container {
     display: flex;
     justify-content: center;
-    margin: auto;
-    flex-direction: column;
-    text-align: center;
     justify-content: center;
     gap: 25px; }
 
   .footer-social {
     display: flex;
-    gap: 20px;
-    justify-content: center; }
+    gap: 20px; }
 
   .full-width-effct {
     position: relative;
@@ -1057,7 +1060,17 @@ footer {
     grid-template-columns: 1fr;
     margin-top: 50px;
     cursor: pointer;
-    grid-gap: 0px; } }
+    grid-gap: 0px; }
+
+  footer {
+    background-image: none;
+    margin-top: 40px; }
+
+  .footer-container {
+    flex-wrap: wrap; }
+
+  .footer-column {
+    width: 100%; } }
 @media only screen and (min-width: 1024px) {
   #menuToggle {
     display: none; }
@@ -1154,6 +1167,30 @@ footer {
 
   footer {
     padding: 50px 30px; } }
+@media only screen and (min-width: 1200px) and (max-width: 1680px) {
+  .main-wrapper {
+    max-width: 1100px;
+    margin: 0 auto; }
+
+  .right-hero-section {
+    max-width: 650px;
+    max-height: 650px; }
+
+  .right-hero-section img {
+    text-align: center;
+    max-width: 380px;
+    width: 100%; }
+
+  .main-title {
+    font-size: 60px; }
+
+  .about-nft img {
+    max-width: 380px; }
+
+  #about {
+    align-items: center; }
+    #about .about-content {
+      margin-top: 0px; } }
 [data-aos][data-aos][data-aos-duration="50"],
 body[data-aos-duration="50"] [data-aos] {
   transition-duration: 50ms; }
