@@ -444,7 +444,7 @@ footer {
   flex-direction: column;
   background-image: url(../images/footer-right.png);
   background-repeat: no-repeat;
-  background-position: right;
+  background-position: right 50px;
   background-size: 260px; }
   footer::after {
     position: absolute;
