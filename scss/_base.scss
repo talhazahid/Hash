@@ -151,7 +151,7 @@ p {
 }
 
 .main-wrapper {
- max-width: 1500px;
+ max-width: 1400px;
  margin: 0 auto;
 }
 
@@ -238,8 +238,10 @@ ul.desktop-menu {
 }
 
 .right-hero-section {
- max-width: 700px;
- max-height: 750px;
+ max-width: 650px;
+ max-height: 650px;
+ display: flex;
+ justify-content: center;
 
  img {
   text-align: center;
@@ -875,8 +877,8 @@ footer {
 
 .nft-sale-img {
  img {
-  max-width: 270px;
-  height: 270px;
+  max-width: 250px;
+  // height: 270px;
   border-radius: 10px;
  }
 }
