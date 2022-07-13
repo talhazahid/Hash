@@ -4,452 +4,418 @@
 // http://scrollme.nckprsn.com
 // ----------------------------------------------------------------------------------------------------
 
-var scrollme = ( function( $ )
-{
-	// ----------------------------------------------------------------------------------------------------
-	// ScrollMe object
-
-	var _this = {};
-
-	// ----------------------------------------------------------------------------------------------------
-	// Properties
-
-	var $document = $( document );
-	var $window = $( window );
+var scrollme = (function ($) {
+ // ----------------------------------------------------------------------------------------------------
+ // ScrollMe object
 
-	_this.body_height = 0;
+ var _this = {};
 
-	_this.viewport_height = 0;
+ // ----------------------------------------------------------------------------------------------------
+ // Properties
 
-	_this.viewport_top = 0;
-	_this.viewport_bottom = 0;
+ var $document = $(document);
+ var $window = $(window);
 
-	_this.viewport_top_previous = -1;
+ _this.body_height = 0;
 
-	_this.elements = [];
-	_this.elements_in_view = [];
+ _this.viewport_height = 0;
 
-	_this.property_defaults =
-	{
-		'opacity' : 1,
-		'translatex' : 0,
-		'translatey' : 0,
-		'translatez' : 0,
-		'rotatex' : 0,
-		'rotatey' : 0,
-		'rotatez' : 0,
-		'scale' : 1,
-		'scalex' : 1,
-		'scaley' : 1,
-		'scalez' : 1
-	};
+ _this.viewport_top = 0;
+ _this.viewport_bottom = 0;
 
-	_this.scrollme_selector = '.scrollme';
-	_this.animateme_selector = '.animateme';
+ _this.viewport_top_previous = -1;
 
-	_this.update_interval = 10;
+ _this.elements = [];
+ _this.elements_in_view = [];
 
-	// Easing functions
+ _this.property_defaults =
+ {
+  'opacity': 1,
+  'translatex': 0,
+  'translatey': 0,
+  'translatez': 0,
+  'rotatex': 0,
+  'rotatey': 0,
+  'rotatez': 0,
+  'scale': 1,
+  'scalex': 1,
+  'scaley': 1,
+  'scalez': 1
+ };
 
-	_this.easing_functions =
-	{
-		'linear' : function( x )
-		{
-			return x;
-		},
+ _this.scrollme_selector = '.scrollme';
+ _this.animateme_selector = '.animateme';
 
-		'easeout' : function( x )
-		{
-			return x * x * x;
-		},
+ _this.update_interval = 10;
 
-		'easein' : function( x )
-		{
-			x = 1 - x;
-			return 1 - ( x * x * x );
-		},
+ // Easing functions
 
-		'easeinout' : function( x )
-		{
-			if( x < 0.5 )
-			{
-				return ( 4 * x * x * x );
-			}
-			else
-			{
-				x = 1 - x;
-				return 1 - ( 4 * x * x * x ) ;
-			}
-		}
-	};
+ _this.easing_functions =
+ {
+  'linear': function (x) {
+   return x;
+  },
 
-	// Document events to bind initialisation to
+  'easeout': function (x) {
+   return x * x * x;
+  },
 
-	_this.init_events =
-	[
-		'ready',
-		'page:load', // Turbolinks
-		'page:change' // Turbolinks
-	];
+  'easein': function (x) {
+   x = 1 - x;
+   return 1 - (x * x * x);
+  },
 
-	// ----------------------------------------------------------------------------------------------------
-	// Initialisation conditions
+  'easeinout': function (x) {
+   if (x < 0.5) {
+    return (4 * x * x * x);
+   }
+   else {
+    x = 1 - x;
+    return 1 - (4 * x * x * x);
+   }
+  }
+ };
 
-	_this.init_if = function() { return true; }
+ // Document events to bind initialisation to
 
-	// ----------------------------------------------------------------------------------------------------
-	// Initialisation
+ _this.init_events =
+  [
+   'ready',
+   'page:load', // Turbolinks
+   'page:change' // Turbolinks
+  ];
 
-	_this.init = function()
-	{
-		// Cancel if initialisation conditions not met
+ // ----------------------------------------------------------------------------------------------------
+ // Initialisation conditions
 
-		if( !_this.init_if() ) return false;
+ _this.init_if = function () { return true; }
 
-		// Load all elements to animate
+ // ----------------------------------------------------------------------------------------------------
+ // Initialisation
 
-		_this.init_elements();
+ _this.init = function () {
+  // Cancel if initialisation conditions not met
 
-		// Get element & viewport sizes
+  if (!_this.init_if()) return false;
 
-		_this.on_resize();
+  // Load all elements to animate
 
-		// Recalculate heights & positions on resize and rotate
+  _this.init_elements();
 
-		$window.on( 'resize orientationchange' , function(){ _this.on_resize(); } );
+  // Get element & viewport sizes
 
-		// Recalculate heights & positions when page is fully loaded + a bit just in case
+  _this.on_resize();
 
-		$window.load( function(){ setTimeout( function(){ _this.on_resize(); } , 100 ) });
+  // Recalculate heights & positions on resize and rotate
 
-		// Start animating
+  $window.on('resize orientationchange', function () { _this.on_resize(); });
 
-		setInterval( _this.update , _this.update_interval );
+  // Recalculate heights & positions when page is fully loaded + a bit just in case
 
-		return true;
-	}
+  $(document).ready(function () { setTimeout(function () { _this.on_resize(); }, 100) });
 
-	// ----------------------------------------------------------------------------------------------------
-	// Get list and pre-load animated elements
+  // Start animating
 
-	_this.init_elements = function()
-	{
-		// For each reference element
+  setInterval(_this.update, _this.update_interval);
 
-		$( _this.scrollme_selector ).each( function()
-		{
-			var element = {};
+  return true;
+ }
 
-			element.element = $( this );
+ // ----------------------------------------------------------------------------------------------------
+ // Get list and pre-load animated elements
 
-			var effects = [];
+ _this.init_elements = function () {
+  // For each reference element
 
-			// For each animated element
+  $(_this.scrollme_selector).each(function () {
+   var element = {};
 
-			$( this ).find( _this.animateme_selector ).addBack( _this.animateme_selector ).each( function()
-			{
-				// Get effect details
+   element.element = $(this);
 
-				var effect = {};
+   var effects = [];
 
-				effect.element = $( this );
+   // For each animated element
 
-				effect.when = effect.element.data( 'when' );
-				effect.from = effect.element.data( 'from' );
-				effect.to = effect.element.data( 'to' );
+   $(this).find(_this.animateme_selector).addBack(_this.animateme_selector).each(function () {
+    // Get effect details
 
-				if( effect.element.is( '[data-crop]' ) )
-				{
-					effect.crop = effect.element.data( 'crop' );
-				}
-				else
-				{
-					effect.crop = true;
-				}
+    var effect = {};
 
-				if( effect.element.is( '[data-easing]' ) )
-				{
-					effect.easing = _this.easing_functions[ effect.element.data( 'easing' ) ]
-				}
-				else
-				{
-					effect.easing = _this.easing_functions[ 'easeout' ];
-				}
+    effect.element = $(this);
 
-				// Get animated properties
+    effect.when = effect.element.data('when');
+    effect.from = effect.element.data('from');
+    effect.to = effect.element.data('to');
 
-				var properties = {};
+    if (effect.element.is('[data-crop]')) {
+     effect.crop = effect.element.data('crop');
+    }
+    else {
+     effect.crop = true;
+    }
 
-				if( effect.element.is( '[data-opacity]' ) )    properties.opacity    = effect.element.data( 'opacity' );
-				if( effect.element.is( '[data-translatex]' ) ) properties.translatex = effect.element.data( 'translatex' );
-				if( effect.element.is( '[data-translatey]' ) ) properties.translatey = effect.element.data( 'translatey' );
-				if( effect.element.is( '[data-translatez]' ) ) properties.translatez = effect.element.data( 'translatez' );
-				if( effect.element.is( '[data-rotatex]' ) )    properties.rotatex    = effect.element.data( 'rotatex' );
-				if( effect.element.is( '[data-rotatey]' ) )    properties.rotatey    = effect.element.data( 'rotatey' );
-				if( effect.element.is( '[data-rotatez]' ) )    properties.rotatez    = effect.element.data( 'rotatez' );
-				if( effect.element.is( '[data-scale]' ) )      properties.scale      = effect.element.data( 'scale' );
-				if( effect.element.is( '[data-scalex]' ) )     properties.scalex     = effect.element.data( 'scalex' );
-				if( effect.element.is( '[data-scaley]' ) )     properties.scaley     = effect.element.data( 'scaley' );
-				if( effect.element.is( '[data-scalez]' ) )     properties.scalez     = effect.element.data( 'scalez' );
+    if (effect.element.is('[data-easing]')) {
+     effect.easing = _this.easing_functions[effect.element.data('easing')]
+    }
+    else {
+     effect.easing = _this.easing_functions['easeout'];
+    }
 
-				effect.properties = properties;
+    // Get animated properties
 
-				effects.push( effect );
-			});
+    var properties = {};
 
-			element.effects = effects;
+    if (effect.element.is('[data-opacity]')) properties.opacity = effect.element.data('opacity');
+    if (effect.element.is('[data-translatex]')) properties.translatex = effect.element.data('translatex');
+    if (effect.element.is('[data-translatey]')) properties.translatey = effect.element.data('translatey');
+    if (effect.element.is('[data-translatez]')) properties.translatez = effect.element.data('translatez');
+    if (effect.element.is('[data-rotatex]')) properties.rotatex = effect.element.data('rotatex');
+    if (effect.element.is('[data-rotatey]')) properties.rotatey = effect.element.data('rotatey');
+    if (effect.element.is('[data-rotatez]')) properties.rotatez = effect.element.data('rotatez');
+    if (effect.element.is('[data-scale]')) properties.scale = effect.element.data('scale');
+    if (effect.element.is('[data-scalex]')) properties.scalex = effect.element.data('scalex');
+    if (effect.element.is('[data-scaley]')) properties.scaley = effect.element.data('scaley');
+    if (effect.element.is('[data-scalez]')) properties.scalez = effect.element.data('scalez');
 
-			_this.elements.push( element );
-		});
-	}
+    effect.properties = properties;
 
-	// ----------------------------------------------------------------------------------------------------
-	// Update elements
+    effects.push(effect);
+   });
 
-	_this.update = function()
-	{
-		window.requestAnimationFrame( function()
-		{
-			_this.update_viewport_position();
+   element.effects = effects;
 
-			if( _this.viewport_top_previous != _this.viewport_top )
-			{
-				_this.update_elements_in_view();
-				_this.animate();
-			}
+   _this.elements.push(element);
+  });
+ }
 
-			_this.viewport_top_previous = _this.viewport_top;
-		});
-	}
+ // ----------------------------------------------------------------------------------------------------
+ // Update elements
 
-	// ----------------------------------------------------------------------------------------------------
-	// Animate stuff
+ _this.update = function () {
+  window.requestAnimationFrame(function () {
+   _this.update_viewport_position();
 
-	_this.animate = function()
-	{
-		// For each element in viewport
+   if (_this.viewport_top_previous != _this.viewport_top) {
+    _this.update_elements_in_view();
+    _this.animate();
+   }
 
-		var elements_in_view_length = _this.elements_in_view.length;
+   _this.viewport_top_previous = _this.viewport_top;
+  });
+ }
 
-		for( var i=0 ; i<elements_in_view_length ; i++ )
-		{
-			var element = _this.elements_in_view[i];
+ // ----------------------------------------------------------------------------------------------------
+ // Animate stuff
 
-			// For each effect
+ _this.animate = function () {
+  // For each element in viewport
 
-			var effects_length = element.effects.length;
+  var elements_in_view_length = _this.elements_in_view.length;
 
-			for( var e=0 ; e<effects_length ; e++ )
-			{
-				var effect = element.effects[e];
+  for (var i = 0; i < elements_in_view_length; i++) {
+   var element = _this.elements_in_view[i];
 
-				// Get effect animation boundaries
+   // For each effect
 
-				switch( effect.when )
-				{
-					case 'view' : // Maintained for backwards compatibility
-					case 'span' :
-						var start = element.top - _this.viewport_height;
-						var end = element.bottom;
-						break;
+   var effects_length = element.effects.length;
 
-					case 'exit' :
-						var start = element.bottom - _this.viewport_height;
-						var end = element.bottom;
-						break;
+   for (var e = 0; e < effects_length; e++) {
+    var effect = element.effects[e];
 
-					default :
-						var start = element.top - _this.viewport_height;
-						var end = element.top;
-						break;
-				}
+    // Get effect animation boundaries
 
-				// Crop boundaries
+    switch (effect.when) {
+     case 'view': // Maintained for backwards compatibility
+     case 'span':
+      var start = element.top - _this.viewport_height;
+      var end = element.bottom;
+      break;
 
-				if( effect.crop )
-				{
-					if( start < 0 ) start = 0;
-					if( end > ( _this.body_height - _this.viewport_height ) ) end = _this.body_height - _this.viewport_height;
-				}
+     case 'exit':
+      var start = element.bottom - _this.viewport_height;
+      var end = element.bottom;
+      break;
 
-				// Get scroll position of reference selector
+     default:
+      var start = element.top - _this.viewport_height;
+      var end = element.top;
+      break;
+    }
 
-				var scroll = ( _this.viewport_top - start ) / ( end - start );
+    // Crop boundaries
 
-				// Get relative scroll position for effect
+    if (effect.crop) {
+     if (start < 0) start = 0;
+     if (end > (_this.body_height - _this.viewport_height)) end = _this.body_height - _this.viewport_height;
+    }
 
-				var from = effect[ 'from' ];
-				var to = effect[ 'to' ];
+    // Get scroll position of reference selector
 
-				var length = to - from;
+    var scroll = (_this.viewport_top - start) / (end - start);
 
-				var scroll_relative = ( scroll - from ) / length;
+    // Get relative scroll position for effect
 
-				// Apply easing
+    var from = effect['from'];
+    var to = effect['to'];
 
-				var scroll_eased = effect.easing( scroll_relative );
+    var length = to - from;
 
-				// Get new value for each property
+    var scroll_relative = (scroll - from) / length;
 
-				var opacity    = _this.animate_value( scroll , scroll_eased , from , to , effect , 'opacity' );
-				var translatey = _this.animate_value( scroll , scroll_eased , from , to , effect , 'translatey' );
-				var translatex = _this.animate_value( scroll , scroll_eased , from , to , effect , 'translatex' );
-				var translatez = _this.animate_value( scroll , scroll_eased , from , to , effect , 'translatez' );
-				var rotatex    = _this.animate_value( scroll , scroll_eased , from , to , effect , 'rotatex' );
-				var rotatey    = _this.animate_value( scroll , scroll_eased , from , to , effect , 'rotatey' );
-				var rotatez    = _this.animate_value( scroll , scroll_eased , from , to , effect , 'rotatez' );
-				var scale      = _this.animate_value( scroll , scroll_eased , from , to , effect , 'scale' );
-				var scalex     = _this.animate_value( scroll , scroll_eased , from , to , effect , 'scalex' );
-				var scaley     = _this.animate_value( scroll , scroll_eased , from , to , effect , 'scaley' );
-				var scalez     = _this.animate_value( scroll , scroll_eased , from , to , effect , 'scalez' );
+    // Apply easing
 
-				// Override scale values
+    var scroll_eased = effect.easing(scroll_relative);
 
-				if( 'scale' in effect.properties )
-				{
-					scalex = scale;
-					scaley = scale;
-					scalez = scale;
-				}
+    // Get new value for each property
 
-				// Update properties
+    var opacity = _this.animate_value(scroll, scroll_eased, from, to, effect, 'opacity');
+    var translatey = _this.animate_value(scroll, scroll_eased, from, to, effect, 'translatey');
+    var translatex = _this.animate_value(scroll, scroll_eased, from, to, effect, 'translatex');
+    var translatez = _this.animate_value(scroll, scroll_eased, from, to, effect, 'translatez');
+    var rotatex = _this.animate_value(scroll, scroll_eased, from, to, effect, 'rotatex');
+    var rotatey = _this.animate_value(scroll, scroll_eased, from, to, effect, 'rotatey');
+    var rotatez = _this.animate_value(scroll, scroll_eased, from, to, effect, 'rotatez');
+    var scale = _this.animate_value(scroll, scroll_eased, from, to, effect, 'scale');
+    var scalex = _this.animate_value(scroll, scroll_eased, from, to, effect, 'scalex');
+    var scaley = _this.animate_value(scroll, scroll_eased, from, to, effect, 'scaley');
+    var scalez = _this.animate_value(scroll, scroll_eased, from, to, effect, 'scalez');
 
-				effect.element.css(
-				{
-					'opacity' : opacity,
-					'transform' : 'translate3d( '+translatex+'px , '+translatey+'px , '+translatez+'px ) rotateX( '+rotatex+'deg ) rotateY( '+rotatey+'deg ) rotateZ( '+rotatez+'deg ) scale3d( '+scalex+' , '+scaley+' , '+scalez+' )'
-				} );
-			}
-		}
-	}
+    // Override scale values
 
-	// ----------------------------------------------------------------------------------------------------
-	// Calculate property values
+    if ('scale' in effect.properties) {
+     scalex = scale;
+     scaley = scale;
+     scalez = scale;
+    }
 
-	_this.animate_value = function( scroll , scroll_eased , from , to , effect , property )
-	{
-		var value_default = _this.property_defaults[ property ];
+    // Update properties
 
-		// Return default value if property is not animated
+    effect.element.css(
+     {
+      'opacity': opacity,
+      'transform': 'translate3d( ' + translatex + 'px , ' + translatey + 'px , ' + translatez + 'px ) rotateX( ' + rotatex + 'deg ) rotateY( ' + rotatey + 'deg ) rotateZ( ' + rotatez + 'deg ) scale3d( ' + scalex + ' , ' + scaley + ' , ' + scalez + ' )'
+     });
+   }
+  }
+ }
 
-		if( !( property in effect.properties ) ) return value_default;
+ // ----------------------------------------------------------------------------------------------------
+ // Calculate property values
 
-		var value_target = effect.properties[ property ];
+ _this.animate_value = function (scroll, scroll_eased, from, to, effect, property) {
+  var value_default = _this.property_defaults[property];
 
-		var forwards = ( to > from ) ? true : false;
+  // Return default value if property is not animated
 
-		// Return boundary value if outside effect boundaries
+  if (!(property in effect.properties)) return value_default;
 
-		if( scroll < from && forwards ) { return value_default; }
-		if( scroll > to && forwards ) { return value_target; }
+  var value_target = effect.properties[property];
 
-		if( scroll > from && !forwards ) { return value_default; }
-		if( scroll < to && !forwards ) { return value_target; }
+  var forwards = (to > from) ? true : false;
 
-		// Calculate new property value
+  // Return boundary value if outside effect boundaries
 
-		var new_value = value_default + ( scroll_eased * ( value_target - value_default ) );
+  if (scroll < from && forwards) { return value_default; }
+  if (scroll > to && forwards) { return value_target; }
 
-		// Round as required
+  if (scroll > from && !forwards) { return value_default; }
+  if (scroll < to && !forwards) { return value_target; }
 
-		switch( property )
-		{
-			case 'opacity'    : new_value = new_value.toFixed(2); break;
-			case 'translatex' : new_value = new_value.toFixed(0); break;
-			case 'translatey' : new_value = new_value.toFixed(0); break;
-			case 'translatez' : new_value = new_value.toFixed(0); break;
-			case 'rotatex'    : new_value = new_value.toFixed(1); break;
-			case 'rotatey'    : new_value = new_value.toFixed(1); break;
-			case 'rotatez'    : new_value = new_value.toFixed(1); break;
-			case 'scale'      : new_value = new_value.toFixed(3); break;
-			default : break;
-		}
+  // Calculate new property value
 
-		// Done
+  var new_value = value_default + (scroll_eased * (value_target - value_default));
 
-		return new_value;
-	}
+  // Round as required
 
-	// ----------------------------------------------------------------------------------------------------
-	// Update viewport position
+  switch (property) {
+   case 'opacity': new_value = new_value.toFixed(2); break;
+   case 'translatex': new_value = new_value.toFixed(0); break;
+   case 'translatey': new_value = new_value.toFixed(0); break;
+   case 'translatez': new_value = new_value.toFixed(0); break;
+   case 'rotatex': new_value = new_value.toFixed(1); break;
+   case 'rotatey': new_value = new_value.toFixed(1); break;
+   case 'rotatez': new_value = new_value.toFixed(1); break;
+   case 'scale': new_value = new_value.toFixed(3); break;
+   default: break;
+  }
 
-	_this.update_viewport_position = function()
-	{
-		_this.viewport_top = $window.scrollTop();
-		_this.viewport_bottom = _this.viewport_top + _this.viewport_height;
-	}
+  // Done
 
-	// ----------------------------------------------------------------------------------------------------
-	// Update list of elements in view
+  return new_value;
+ }
 
-	_this.update_elements_in_view = function()
-	{
-		_this.elements_in_view = [];
+ // ----------------------------------------------------------------------------------------------------
+ // Update viewport position
 
-		var elements_length = _this.elements.length;
+ _this.update_viewport_position = function () {
+  _this.viewport_top = $window.scrollTop();
+  _this.viewport_bottom = _this.viewport_top + _this.viewport_height;
+ }
 
-		for( var i=0 ; i<elements_length ; i++ )
-		{
-			if ( ( _this.elements[i].top < _this.viewport_bottom ) && ( _this.elements[i].bottom > _this.viewport_top ) )
-			{
-				_this.elements_in_view.push( _this.elements[i] );
-			}
-		}
-	}
+ // ----------------------------------------------------------------------------------------------------
+ // Update list of elements in view
 
-	// ----------------------------------------------------------------------------------------------------
-	// Stuff to do on resize
+ _this.update_elements_in_view = function () {
+  _this.elements_in_view = [];
 
-	_this.on_resize = function()
-	{
-		// Update viewport/element data
+  var elements_length = _this.elements.length;
 
-		_this.update_viewport();
-		_this.update_element_heights();
+  for (var i = 0; i < elements_length; i++) {
+   if ((_this.elements[i].top < _this.viewport_bottom) && (_this.elements[i].bottom > _this.viewport_top)) {
+    _this.elements_in_view.push(_this.elements[i]);
+   }
+  }
+ }
 
-		// Update display
+ // ----------------------------------------------------------------------------------------------------
+ // Stuff to do on resize
 
-		_this.update_viewport_position();
-		_this.update_elements_in_view();
-		_this.animate();
-	}
+ _this.on_resize = function () {
+  // Update viewport/element data
 
-	// ----------------------------------------------------------------------------------------------------
-	// Update viewport parameters
+  _this.update_viewport();
+  _this.update_element_heights();
 
-	_this.update_viewport = function()
-	{
-		_this.body_height = $document.height();
-		_this.viewport_height = $window.height();
-	}
+  // Update display
 
-	// ----------------------------------------------------------------------------------------------------
-	// Update height of animated elements
+  _this.update_viewport_position();
+  _this.update_elements_in_view();
+  _this.animate();
+ }
 
-	_this.update_element_heights = function()
-	{
-		var elements_length = _this.elements.length;
+ // ----------------------------------------------------------------------------------------------------
+ // Update viewport parameters
 
-		for( var i=0 ; i<elements_length ; i++ )
-		{
-			var element_height = _this.elements[i].element.outerHeight();
-			var position = _this.elements[i].element.offset();
+ _this.update_viewport = function () {
+  _this.body_height = $document.height();
+  _this.viewport_height = $window.height();
+ }
 
-			_this.elements[i].height = element_height;
-			_this.elements[i].top = position.top;
-			_this.elements[i].bottom = position.top + element_height;
-		}
-	}
+ // ----------------------------------------------------------------------------------------------------
+ // Update height of animated elements
 
-	// ----------------------------------------------------------------------------------------------------
-	// Bind initialisation
+ _this.update_element_heights = function () {
+  var elements_length = _this.elements.length;
 
-	$document.on( _this.init_events.join( ' ' ) , function(){ _this.init(); } );
+  for (var i = 0; i < elements_length; i++) {
+   var element_height = _this.elements[i].element.outerHeight();
+   var position = _this.elements[i].element.offset();
 
-	// ----------------------------------------------------------------------------------------------------
+   _this.elements[i].height = element_height;
+   _this.elements[i].top = position.top;
+   _this.elements[i].bottom = position.top + element_height;
+  }
+ }
 
-	return _this;
+ // ----------------------------------------------------------------------------------------------------
+ // Bind initialisation
 
-	// ----------------------------------------------------------------------------------------------------
+ $('document').ready(function () { _this.init(); });
 
-})( jQuery );
+ // ----------------------------------------------------------------------------------------------------
+
+ return _this;
+
+ // ----------------------------------------------------------------------------------------------------
+
+})(jQuery);
