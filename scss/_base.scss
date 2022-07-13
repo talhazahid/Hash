@@ -228,7 +228,8 @@ ul.desktop-menu {
  display: flex;
  justify-content: space-between;
  align-items: center;
- margin-top: 40px;
+//  margin-top: 40px;
+margin-top: 80px;
 }
 
 .shrink .desktop-logo {
@@ -388,7 +389,7 @@ section h2 {
  display: grid;
  grid-template-columns: repeat(4, 1fr);
  grid-gap: 30px;
-
+padding-bottom: 40px;
  a {
   text-align: center;
  }
@@ -410,11 +411,13 @@ section h2 {
  grid-template-columns: repeat(3, 1fr);
  grid-gap: 30px;
  margin-bottom: 60px;
+ padding-bottom: 20px;
 }
 
 .person-name {
  color: #212224;
- font-size: 30px;
+//  font-size: 30px;
+font-size: 22px;
  font-weight: bold;
  margin-top: 25px;
  margin-bottom: 5px;
@@ -423,7 +426,8 @@ section h2 {
 }
 
 .person-designation {
- font-size: 24px;
+//  font-size: 24px;
+font-size: 18px;
  color: #626262;
  display: flex;
  justify-content: center;
@@ -498,6 +502,7 @@ footer {
  h3 {
   font-size: 20px;
   margin-bottom: 10px;
+  font-weight: bold;
  }
 
  ul {
