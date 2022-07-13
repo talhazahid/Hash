@@ -1,4 +1,3 @@
-
 @media only screen and (max-width: 1023px) {
  .hide-on-mobile {
   display: none;
@@ -343,6 +342,10 @@
   min-height: 70vh;
  }
 
+ .hero-section {
+  height: 70vh;
+ }
+
  section h2 {
   font-size: 55px;
  }
@@ -372,13 +375,6 @@
 
  .section-gallery img {
   max-height: 270px;
- }
-
- .team-section {
-  img {
-//    max-height: 280px;
-    max-height: 160px;
-  }
  }
 
  .team-section {
@@ -444,9 +440,33 @@
  }
 }
 
-@media only screen and (min-width: 1200px) and (max-width: 1440px){
-    .hero-section{
-        height: 100vh;
-        padding-bottom: 130px;
-    }
+@media only screen and (min-width: 1200px) and (max-width: 1440px) {
+ // .hero-section {
+ //  height: 100vh;
+ //  padding-bottom: 130px;
+ // }
+}
+
+@media only screen and (min-width: 1023px) {
+ // .hero-section {
+ //  height: 100vh;
+ //  padding-bottom: 130px;
+ // }
+
+ .team-section {
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 30px;
+  margin-bottom: 60px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0px 50px;
+ }
+
+ .team-section {
+  img {
+   //    max-height: 280px;
+   max-height: 160px;
+  }
+ }
 }
